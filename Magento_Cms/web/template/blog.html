@@ -1,0 +1,19 @@
+<div class="blog-wrapper">
+    <div class="blog-form">
+        <div class="form-title">
+            <h2 data-bind="i18n: 'You have to be logged to see the content.'"></h2>
+        </div>
+    </div>
+
+    <div class="blog-form-login">
+        <!-- ko foreach: getRegion('login') -->
+            <!-- ko template: getTemplate() --><!--/ko-->
+        <!--/ko-->
+    </div>
+
+    <div class="blog-form-register">
+        <!-- ko foreach: getRegion('register') -->
+            <!-- ko template: getTemplate() --><!--/ko-->
+        <!--/ko-->
+    </div>
+</div>

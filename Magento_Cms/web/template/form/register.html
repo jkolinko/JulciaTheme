@@ -1,0 +1,46 @@
+<div class="register-container">
+    <div class="register-form-title">
+        <h3 data-bind="i18n: 'Register'"></h3>
+    </div>
+
+    <div class="register-form-container">
+        <div class="action action-create-account">
+            <button class="button">
+                <a href="" data-bind="i18n: 'Create an account'"></a>
+            </button>
+        </div>
+
+        <form class="register-form">
+            <div class="field name required">
+                <label for="name" class="label" data-bind="i18n: 'Name'"></label>
+                <div class="control">
+                    <input type="text" class="input" id="name"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label for="email" class="label" data-bind="i18n: 'Email'"></label>
+                <div class="control">
+                    <input type="email" class="input" id="email"/>
+                </div>
+            </div>
+            <div class="field password required">
+                <label for="password" class="label" data-bind="i18n: 'Password'"></label>
+                <div class="control">
+                    <input type="password" class="input" id="password"/>
+                </div>
+            </div>
+            <div class="field confirm-password required">
+                <label for="confirm-password" class="label" data-bind="i18n: 'Confirm password'"></label>
+                <div class="control">
+                    <input type="password" class="input" id="confirm-password"/>
+                </div>
+            </div>
+
+            <div class="action action-register">
+                <button class="button">
+                    <a href="" data-bind="i18n: 'Sign up'"></a>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

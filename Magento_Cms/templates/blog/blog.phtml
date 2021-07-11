@@ -1,0 +1,13 @@
+<?php /* @var $block Magento\Framework\View\Element\Template */ ?>
+
+<div id="blog" data-bind="scope: 'custom-blog'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#blog": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+        }
+    }
+</script>
