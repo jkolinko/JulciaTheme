@@ -24,7 +24,7 @@
                                         <item name="config" xsi:type="array">
                                             <item name="template" xsi:type="string">Magento_Cms/form/login</item>
                                         </item>
-                                        <item name="displayArea" xsi:type="string">register</item>
+                                        <item name="displayArea" xsi:type="string">login</item>
                                     </item>
                                     <item name="register" xsi:type="array">
                                         <item name="sortOrder" xsi:type="string">1</item>
