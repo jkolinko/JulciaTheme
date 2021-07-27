@@ -4,23 +4,32 @@
     </div>
 
     <div class="login-form-container">
-        <form class="login-form">
+        <form class="login-form" id="blog-login-form" data-bind="submit: sendForm, mageInit: {'validation': {}}" action="#" autocomplete="off">
             <div class="field name required">
-                <label for="name" class="label" data-bind="i18n: 'Name'"></label>
+                <label for="username-login" class="label" data-bind="i18n: 'Username'"></label>
                 <div class="control">
-                    <input type="text" class="input" id="name"/>
+                    <input type="text"
+                           class="input"
+                           id="username-login"
+                           data-validate="{required: true}"
+                           data-bind="value: username"/>
                 </div>
             </div>
             <div class="field password required">
-                <label for="password" class="label" data-bind="i18n: 'Password'"></label>
+                <label for="password-login" class="label" data-bind="i18n: 'Password'"></label>
                 <div class="control">
-                    <input type="password" class="input" id="password"/>
+                    <input type="password"
+                           class="input"
+                           id="password-login"
+                           autocomplete="off"
+                           data-validate="{required: true, 'validate-customer-password': true}"
+                           data-bind="value: password"/>
                 </div>
             </div>
 
             <div class="action action-login">
                 <button class="button">
-                    <a href="" data-bind="i18n: 'Sign in'"></a>
+                    <span data-bind="i18n: 'Sign in'"></span>
                 </button>
             </div>
         </form>

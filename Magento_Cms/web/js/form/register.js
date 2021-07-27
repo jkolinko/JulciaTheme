@@ -5,7 +5,7 @@ define([
     'Magento_Customer/js/customer-data',
     'mage/translate',
     'Magento_Ui/js/view/messages',
-    'mage/validation',
+    'mage/validation'
     ], function($, Component, ko, customerData, $t) {
     'use strict';
 
@@ -15,14 +15,14 @@ define([
             email: ko.observable(''),
             password: ko.observable(''),
             passwordConfirm: ko.observable(''),
-            registerFormSelector: "#register-form",
+            registerFormSelector: '#blog-register-form',
             registerSuccessMessage: $t('Registration was successful, you can log in.'),
             registerErrorMessage: $t('Registration failed, please try again.')
         },
 
         initialize: function() {
             this._super()
-                .observe(["username", "email", "password", "passwordConfirm"]);
+                .observe(['username', 'email', 'password', 'passwordConfirm']);
 
             return this;
         },
@@ -60,7 +60,7 @@ define([
         },
 
         validateForm: function(form) {
-            return form.validation() && form.validation("isValid");
+            return form.validation() && form.validation('isValid');
         },
 
         sendForm: function() {
@@ -73,10 +73,10 @@ define([
                 localStorage.setItem('password', self.getPassword());
                 localStorage.setItem('passwordConfirm', self.getPasswordConfirm());
 
-                self.setUsername("");
-                self.setEmail("");
-                self.setPassword("");
-                self.setPasswordConfirm("");
+                self.setUsername('');
+                self.setEmail('');
+                self.setPassword('');
+                self.setPasswordConfirm('');
 
                 customerData.set('messages', {
                     messages: [{
@@ -90,8 +90,8 @@ define([
                         type: 'error',
                         text: self.registerErrorMessage
                     }]
-                });
+                })
             }
-        },
-    });
+        }
+    })
 });
