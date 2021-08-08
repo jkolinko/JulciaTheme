@@ -6,13 +6,13 @@
     <div class="login-form-container">
         <form class="login-form" id="blog-login-form" data-bind="submit: sendForm" action="#" autocomplete="off">
             <div class="field name required">
-                <label for="username" class="label" data-bind="i18n: 'Username'"></label>
+                <label for="email" class="label" data-bind="i18n: 'Email'"></label>
                 <div class="control">
-                    <input type="text"
+                    <input type="email"
                            class="input"
-                           id="username"
-                           data-validate="{required: true}"
-                           data-bind="value: username"/>
+                           id="email"
+                           data-validate="{required: true, 'validate-email': true}"
+                           data-bind="value: email"/>
                 </div>
             </div>
             <div class="field password required">
