@@ -15,7 +15,6 @@ define([
                 email: true,
                 password: true
             },
-            customerLoggedIn: false,
             loginFormSelector: '#blog-login-form',
             loginValidationMessage: $t('Fill required fields.')
         },
@@ -48,8 +47,6 @@ define([
             var loginForm = $(self.loginFormSelector);
 
             return new Promise(function(resolve, reject) {
-                loginForm.validation();
-
                 if(loginForm.validation('isValid')) {
                     resolve(true);
                 }

@@ -4,7 +4,7 @@
     </div>
 
     <div class="login-form-container">
-        <form class="login-form" id="blog-login-form" data-bind="submit: sendForm" action="#" autocomplete="off">
+        <form class="login-form" id="blog-login-form" data-bind="mageInit: {'validation': {}}, submit: sendForm" action="#" autocomplete="off">
             <div class="field name required">
                 <label for="email" class="label" data-bind="i18n: 'Email'"></label>
                 <div class="control">

@@ -1,4 +1,5 @@
 <div class="blog-wrapper">
+    <!-- ko ifnot: isLoggedIn() -->
     <div class="blog-form">
         <div class="form-title">
             <h2 data-bind="i18n: 'You have to be logged to see the content.'"></h2>
@@ -10,4 +11,13 @@
             <!--/ko-->
         </div>
     </div>
+    <!-- /ko -->
+
+    <!-- ko if: isLoggedIn() -->
+    <div class="blog-content">
+        <!-- ko foreach: getRegion('blogGreet') -->
+            <!-- ko template: getTemplate() --><!--/ko-->
+        <!--/ko-->
+    </div>
+    <!-- /ko -->
 </div>

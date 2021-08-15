@@ -26,6 +26,14 @@
                                         </item>
                                         <item name="displayArea" xsi:type="string">login</item>
                                     </item>
+                                    <item name="blogGreet" xsi:type="array">
+                                        <item name="sortOrder" xsi:type="string">0</item>
+                                        <item name="component" xsi:type="string">Magento_Cms/js/blog-greet</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Magento_Cms/blog-greet</item>
+                                        </item>
+                                        <item name="displayArea" xsi:type="string">blogGreet</item>
+                                    </item>
                                 </item>
                             </item>
                         </item>
