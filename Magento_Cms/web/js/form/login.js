@@ -11,10 +11,8 @@ define([
 
     return Component.extend({
         defaults: {
-            tracks: {
-                email: true,
-                password: true
-            },
+            email: ko.observable(''),
+            password: ko.observable(''),
             loginFormSelector: '#blog-login-form',
             loginValidationMessage: $t('Fill required fields.')
         },
@@ -47,7 +45,7 @@ define([
             var loginForm = $(self.loginFormSelector);
 
             return new Promise(function(resolve, reject) {
-                if(loginForm.validation('isValid')) {
+                if(loginForm.validation('isValid') && self.getEmail() && self.getPassword()) {
                     resolve(true);
                 }
 
@@ -58,39 +56,36 @@ define([
         sendForm: function() {
             var self = this;
 
-            self.validateForm()
-                .then(function() {
-                    var user = {
-                        username: self.getEmail(),
-                        password: self.getPassword()
-                    };
+            self.validateForm().then(function() {
+                var user = {
+                    username: self.getEmail(),
+                    password: self.getPassword()
+                };
 
-                    $.ajax({
-                        contentType: 'application/json',
-                        context: self.loginFormSelector,
-                        data: JSON.stringify(user),
-                        showLoader: true,
-                        type: 'POST',
-                        url: 'rest/default/V1/integration/customer/token',
+                $('body').trigger('processStart');
 
-                        error: function() {
-                            self.setEmail('');
-                            self.setPassword('');
-                        },
+                $.ajax({
+                    contentType: 'application/json',
+                    context: self.loginFormSelector,
+                    data: JSON.stringify(user),
+                    type: 'POST',
+                    url: 'rest/default/V1/integration/customer/token'
+                }).done(function() {
+                    loginAction(user);
+                }).fail(function() {
+                    $('body').trigger('processStop');
 
-                        success: function() {
-                            loginAction(user);
-                        }
-                    })
+                    self.setEmail('');
+                    self.setPassword('');
                 })
-                .catch(function() {
-                    customerData.set('messages', {
-                        messages: [{
-                            type: 'error',
-                            text: self.loginValidationMessage
-                        }]
-                    })
-                });
+            }).catch(function() {
+                customerData.set('messages', {
+                    messages: [{
+                        type: 'error',
+                        text: self.loginValidationMessage
+                    }]
+                })
+            })
         }
     })
 });
