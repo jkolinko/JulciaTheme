@@ -77,14 +77,18 @@ define([
 
                     self.setEmail('');
                     self.setPassword('');
-                })
+                });
             }).catch(function() {
-                customerData.set('messages', {
-                    messages: [{
-                        type: 'error',
-                        text: self.loginValidationMessage
-                    }]
-                })
+                self.customerMessage('error', self.loginValidationMessage);
+            })
+        },
+
+        customerMessage: function(type, text) {
+            customerData.set('messages', {
+                messages: [{
+                    type: type,
+                    text: text
+                }]
             })
         }
     })
