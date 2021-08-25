@@ -13,6 +13,8 @@ define([
         defaults: {
             email: ko.observable(''),
             password: ko.observable(''),
+            showErrorMessage: ko.observable(false),
+            errorMessageContent: ko.observable(''),
             loginFormSelector: '#blog-login-form',
             loginValidationMessage: $t('Fill required fields.')
         },
@@ -44,6 +46,8 @@ define([
             var self = this;
             var loginForm = $(self.loginFormSelector);
 
+            self.showErrorMessage(false);
+
             return new Promise(function(resolve, reject) {
                 if(loginForm.validation('isValid') && self.getEmail() && self.getPassword()) {
                     resolve(true);
@@ -72,8 +76,11 @@ define([
                     url: 'rest/default/V1/integration/customer/token'
                 }).done(function() {
                     loginAction(user);
-                }).fail(function() {
+                }).fail(function(jqXHR) {
                     $('body').trigger('processStop');
+
+                    self.errorMessageContent($t(jqXHR.responseJSON.message));
+                    self.showErrorMessage(true);
 
                     self.setEmail('');
                     self.setPassword('');
